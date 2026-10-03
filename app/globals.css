@@ -1,0 +1,103 @@
+:root {
+  --ground: #141210;
+  --surface: #1c1916;
+  --surface-2: #242019;
+  --line: #332d24;
+  --line-soft: #282319;
+  --ink: #efe7d7;
+  --ink-soft: #b6ab97;
+  --ink-faint: #8a8072;
+  --glow: #f0b24a;
+  --glow-deep: #c9862a;
+  --gain: #5fae7c;
+  --loss: #d8574e;
+  --naira: #e7c56a;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--ground);
+  background-image: radial-gradient(130% 90% at 82% -10%, rgba(240, 178, 74, 0.10), transparent 60%);
+  background-repeat: no-repeat;
+  color: var(--ink);
+  font-family: "IBM Plex Sans", system-ui, sans-serif;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+.stage { max-width: 640px; margin: 0 auto; padding: 28px 20px 80px; }
+
+.top {
+  display: flex; align-items: baseline; justify-content: space-between;
+  border-bottom: 1px solid var(--line-soft); padding-bottom: 14px; margin-bottom: 18px;
+}
+.wordmark {
+  font-family: "Bricolage Grotesque", sans-serif; font-weight: 800;
+  letter-spacing: 0.14em; font-size: 15px; color: #fff;
+}
+.wordmark .dim { color: var(--glow-deep); }
+.daylabel { font-family: "IBM Plex Mono", monospace; font-size: 11px; letter-spacing: 0.14em; color: var(--ink-faint); text-transform: uppercase; }
+
+/* meters */
+.meters { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 22px; }
+.meter {
+  font-family: "IBM Plex Mono", monospace; font-size: 11.5px;
+  color: var(--ink-soft); background: var(--surface); border: 1px solid var(--line);
+  border-radius: 999px; padding: 4px 11px; font-variant-numeric: tabular-nums;
+}
+.meter b { color: var(--naira); font-weight: 500; }
+.meter.warn b { color: var(--loss); }
+
+/* scene + voice */
+.scene { color: var(--ink-soft); font-size: 15.5px; margin-bottom: 16px; }
+.voice {
+  border-left: 2px solid var(--glow-deep); padding: 4px 0 4px 16px; margin: 18px 0 22px;
+  font-family: "Bricolage Grotesque", "IBM Plex Sans", sans-serif; font-size: 18px;
+  line-height: 1.45; color: #fff; text-wrap: pretty;
+}
+
+/* choices */
+.choices { display: grid; gap: 10px; }
+.btn {
+  text-align: left; width: 100%; cursor: pointer;
+  background: var(--surface); color: var(--ink); border: 1px solid var(--line);
+  border-radius: 12px; padding: 13px 15px; font: inherit; transition: border-color 0.15s, background 0.15s;
+}
+.btn:hover:not(:disabled) { border-color: var(--glow-deep); background: var(--surface-2); }
+.btn:focus-visible { outline: 2px solid var(--glow); outline-offset: 2px; }
+.btn:disabled { opacity: 0.45; cursor: default; }
+.btn .c-t { font-weight: 600; font-size: 15px; }
+.btn .c-d { font-size: 12.5px; color: var(--ink-faint); margin-top: 3px; }
+.btn.step { border-style: dashed; color: var(--glow); text-align: center; }
+.btn.step .c-t { color: var(--glow); }
+
+/* gift row */
+.giftrow { display: flex; gap: 8px; margin-top: 6px; }
+.giftrow input {
+  flex: 1; background: var(--ground); border: 1px solid var(--glow-deep); border-radius: 10px;
+  color: var(--ink); padding: 11px 13px; font: inherit; font-family: "IBM Plex Mono", monospace;
+}
+.giftrow input:focus-visible { outline: 2px solid var(--glow); outline-offset: 1px; }
+.give { background: var(--glow); color: #201700; border: none; border-radius: 10px; padding: 0 16px; font-weight: 600; cursor: pointer; }
+
+/* wander */
+.wander { display: grid; gap: 10px; margin-top: 6px; }
+
+/* cards / title / end */
+.card { background: linear-gradient(180deg, var(--surface-2), var(--surface)); border: 1px solid var(--line); border-radius: 16px; padding: 26px; }
+.title-hero { text-align: center; padding: 60px 0 30px; }
+.title-hero h1 { font-family: "Bricolage Grotesque", sans-serif; font-weight: 800; font-size: clamp(40px, 12vw, 72px); color: #fff; letter-spacing: -0.01em; }
+.title-hero h1 .dim { color: var(--glow-deep); }
+.title-hero p { color: var(--ink-soft); margin-top: 14px; max-width: 42ch; margin-inline: auto; }
+.begin { margin-top: 26px; background: var(--glow); color: #201700; border: none; border-radius: 12px; padding: 14px 26px; font: inherit; font-weight: 700; font-size: 16px; cursor: pointer; }
+.begin:hover { background: #ffc266; }
+
+.endcard h2 { font-family: "Bricolage Grotesque", sans-serif; color: #fff; font-size: 26px; margin-bottom: 10px; }
+.endcard .v { color: var(--ink-soft); font-size: 16px; margin-bottom: 18px; }
+
+.muted { color: var(--ink-faint); font-size: 13px; }
+.busy { color: var(--glow); font-family: "IBM Plex Mono", monospace; font-size: 12px; letter-spacing: 0.1em; }
+.footnote { margin-top: 26px; color: var(--ink-faint); font-size: 12px; font-family: "IBM Plex Mono", monospace; }
+
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
